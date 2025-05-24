@@ -1,0 +1,59 @@
+version: 1
+reviews:
+  # High level configuration
+  auto_review: true
+  auto_merge: false
+  notify_for_changes: true
+  
+  # Review configuration
+  review_level: standard
+  path_filters:
+    - "**/*.{js,jsx,ts,tsx}"  # React/React Native files
+    - "**/*.{json,yaml,yml}"  # Config files
+    - "!**/node_modules/**"   # Exclude node_modules
+    - "!**/build/**"          # Exclude build directories
+    - "!**/dist/**"           # Exclude dist directories
+  
+  # PR summary configuration
+  summary:
+    enabled: true
+    style: detailed
+    include_changed_files: true
+    
+  # Code suggestions configuration
+  suggestions:
+    enabled: true
+    auto_apply: false         # Don't automatically apply suggestions
+    
+  # Review comments configuration
+  comments:
+    enabled: true
+    include_best_practices: true
+    include_performance: true
+    include_security: true
+    
+  # Testing suggestions
+  testing:
+    enabled: true
+    suggest_tests: true
+
+  # Specific checks
+  checks:
+    - type: security
+      enabled: true
+    - type: performance
+      enabled: true
+    - type: best_practices
+      enabled: true
+    - type: documentation
+      enabled: true
+
+  # Language specific settings
+  typescript:
+    strict_null_checks: true
+    no_implicit_any: true
+    
+  react:
+    check_hooks: true
+    check_props: true
+    check_accessibility: true 
